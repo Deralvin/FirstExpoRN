@@ -29,39 +29,41 @@ export default function App() {
     console.log("delete item");
   }
   return (
-    <View style={styles.appContainer}>
-      <StatusBar style="dark" />
-      <Button
-        title="Add New Goal"
-        color="#5e0acc"
-        onPress={startAddGoalHandler}
-      />
-      {modalisVisible && (
-        <GoalInput
-          visible={modalisVisible}
-          onAddGoal={addGoalHandler}
-          onCancel={endAddGoalHandler}
+    <>
+      <StatusBar style="light" />
+      <View style={styles.appContainer}>
+        <Button
+          title="Add New Goal"
+          color="#a065ec"
+          onPress={startAddGoalHandler}
         />
-      )}
-      <View style={styles.goalsContainer}>
-        <FlatList
-          data={courseGoal}
-          renderItem={(itemData) => {
-            return (
-              <GoalItem
-                text={itemData.item.text}
-                onDeleteItem={deleteGoalItem}
-                id={itemData.item.id}
-              />
-            );
-          }}
-          alwaysBounceVertical={false}
-          keyExtractor={(item, index) => {
-            return item.id;
-          }}
-        />
+        {modalisVisible && (
+          <GoalInput
+            visible={modalisVisible}
+            onAddGoal={addGoalHandler}
+            onCancel={endAddGoalHandler}
+          />
+        )}
+        <View style={styles.goalsContainer}>
+          <FlatList
+            data={courseGoal}
+            renderItem={(itemData) => {
+              return (
+                <GoalItem
+                  text={itemData.item.text}
+                  onDeleteItem={deleteGoalItem}
+                  id={itemData.item.id}
+                />
+              );
+            }}
+            alwaysBounceVertical={false}
+            keyExtractor={(item, index) => {
+              return item.id;
+            }}
+          />
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
@@ -70,6 +72,7 @@ const styles = StyleSheet.create({
     paddingTop: 80,
     flex: 1,
     paddingHorizontal: 16,
+    backgroundColor: "#1e085a",
   },
 
   goalsContainer: {
